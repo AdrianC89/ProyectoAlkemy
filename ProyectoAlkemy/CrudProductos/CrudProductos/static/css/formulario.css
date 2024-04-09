@@ -1,0 +1,23 @@
+.crearProducto {
+    border: rgb(109, 178, 238) solid 2px;
+    border-radius: 15px 15px 0 0;
+    width: 50%;
+    margin: auto;
+}
+.crearProducto h1 {
+    color: aliceblue;
+    padding: 0.5rem;
+    margin-top: 0;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(109, 178, 238);
+}
+
+#agregar_producto_form {
+text-align: center;
+}
+
+#agregar_producto_form p{
+    
+    }

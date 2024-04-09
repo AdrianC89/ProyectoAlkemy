@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'css/producto.css' %}">
+    <title>Lista de Productos</title>
+</head>
+<body>
+    <h1>Lista de productos</h1>
+    <div class="tab">
+    <table>
+        <thead class="tab">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock Actual</th>
+                <th>Proveedor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.stock_actual }}</td>
+                <td>{{ producto.proveedor.nombre }} {{ producto.proveedor.apellido }}</td>
+                <td>
+                    <form method="post" action="{% url 'update_producto' producto.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form method="post" action="{% url 'borrarProducto' producto.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="boton">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <button><a href="{% url 'crear_producto' %}">Crear nuevo Producto</a></button>
+    <button><a href="{% url 'mostrar_proveedor' %}">Ir a la lista de proveedores</a></button>
+</body>
+</html>
